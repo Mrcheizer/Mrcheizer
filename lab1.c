@@ -36,12 +36,10 @@ int main(int argc, char const *argv[]) {
   for(int j = 1; j<=strCount; j++){
     sum+=arr[j];
     brr[j+1]=sum;
-    //printf("%d - %d\n", brr[j], arr[j]);
   }
   close(fd);
   printf("Всего в файле %d строк\n", strCount);
-  printf("Введите номер строки от 1 до %d\n", strCount);
-  printf("Для выхода из программы введите 0\n" );
+  printf("Введите номер строки %d\n", strCount);
   while (n!=0) {
   scanf("%d", &n);
     fd=open("text.txt", O_RDONLY);
