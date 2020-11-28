@@ -42,6 +42,12 @@ int main(int argc, char const *argv[]) {
   printf("Введите номер строки %d\n", strCount);
   while (n!=0) {
   scanf("%d", &n);
+  if(n==0)
+  {
+      return 0;
+      printf("Невозможно открыть строку 0!");
+  }
+  else{
     fd=open("text.txt", O_RDONLY);
     lseek(fd, brr[n], SEEK_SET);
     for(int j = 1; j<arr[n]; j++){
@@ -50,6 +56,7 @@ int main(int argc, char const *argv[]) {
     }
     printf("\n");
     close(fd);
+  }
   }
   printf("Программа завершила работу\n");
   return 0;
