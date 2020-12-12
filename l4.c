@@ -13,7 +13,6 @@ FILE *fd;
 sem_t *semaphore1;
 sem_t *semaphore2;
 
-
 void* square(void* args) {
     int i, res=0;
     for (i = 0; i < 100; i++) {
