@@ -6,6 +6,7 @@
 #include <semaphore.h>
 #include <pthread.h>
 #include <fcntl.h> 
+#include <sys/stat.h>
 
 
 FILE *fd;
