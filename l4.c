@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <semaphore.h>
 #include <pthread.h>
+#include <fcntl.h> 
 
 
 FILE *fd;
@@ -34,17 +35,21 @@ void* cube(void* args) {
 }
 
 int main(int argc, char const *argv[]) {
-	  fd = fopen("log.txt", "w");
       pthread_t thread1;
       pthread_t thread2;
 
-      sem_init(&semaphore, 0, 1);
+      semaphore1 = sem_open("/my_named_semaphore1", O_CREAT, S_IRUSR | S_IWUSR, 0);
+      semaphore2 = sem_open("/my_named_semaphore2", O_CREAT, S_IRUSR | S_IWUSR, 1);
 
       pthread_create(&thread1, NULL, square, NULL);
       pthread_create(&thread2, NULL, cube, NULL);
 
       pthread_join(thread1, NULL);
       pthread_join(thread2, NULL);
+      
+      
+      sem_unlink("/my_named_semaphore1");
+      sem_unlink("/my_named_semaphore2");
       printf("done \n");
       return 0;
 }
