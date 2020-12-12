@@ -31,6 +31,7 @@ void* cube(void* args) {
     res=i*i*i;
     fprintf(fd,"step %d: calculate %d*%d*%d=%d \n", i, i, i, i, res);
     res=0;
+    fclose(fd);
     sem_post(&semaphore);
   }
 }
