@@ -9,7 +9,8 @@
 
 
 FILE *fd;
-sem_t semaphore;
+sem_t *semaphore1;
+sem_t *semaphore2;
 
 
 void* square(void* args) {
