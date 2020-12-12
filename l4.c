@@ -16,26 +16,26 @@ sem_t *semaphore2;
 void* square(void* args) {
     int i, res=0;
     for (i = 0; i < 100; i++) {
-      sem_wait(&semaphore);
+      sem_wait(semaphore2);
       fd = fopen("log.txt", "a");
       res=i*i;
       fprintf(fd,"step %d: calculate %d*%d=%d \n", i, i, i, res);
       res=0;
-        fclose(fd);
-      sem_post(&semaphore);
+      fclose(fd);
+      sem_post(semaphore1);
     }
 }
 
 void* cube(void* args) {
   int i, res=0;
   for (i = 0; i < 100; i++) {
-    sem_wait(&semaphore);
+    sem_wait(semaphore1);
     fd = fopen("log.txt", "a");
     res=i*i*i;
     fprintf(fd,"step %d: calculate %d*%d*%d=%d \n", i, i, i, i, res);
     res=0;
     fclose(fd);
-    sem_post(&semaphore);
+    sem_post(semaphore2);
   }
 }
 
